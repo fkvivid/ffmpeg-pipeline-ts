@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard · ffmpeg-pipeline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/app.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-header__inner">
+      <a href="/" class="app-logo">
+        <span class="app-logo__mark">▶</span>
+        ffmpeg-pipeline
+      </a>
+      <nav class="app-nav">
+        <a href="/" class="active">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div class="page-title">
+      <h1>Encoding dashboard</h1>
+      <p>Upload a source file, encode an HLS ladder, and score quality with VMAF.</p>
+    </div>
+
+    <section class="card">
+      <h2 class="card__title">Upload</h2>
+      <div id="dropzone" class="dropzone">
+        <div class="dropzone__icon">📹</div>
+        <h2>Drop a video here</h2>
+        <p>MP4, MOV, MKV · max 10 GB</p>
+        <input type="file" id="fileInput" accept="video/*" />
+      </div>
+
+      <div id="progressPanel" class="progress-panel">
+        <p id="statusText" class="progress-panel__status">Uploading…</p>
+        <div class="bar upload-bar"><div class="bar-fill" id="uploadBar"></div></div>
+        <div id="renditions"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="card__title">Job history</h2>
+      <p id="historyEmpty" class="empty-state hidden">No jobs yet. Upload a video to start your first encode.</p>
+      <div id="historyTable" class="table-wrap hidden">
+        <table>
+          <thead>
+            <tr>
+              <th>Video</th>
+              <th>Status</th>
+              <th>VMAF</th>
+              <th>Created</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="historyBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/static/js/dashboard.js"></script>
+</body>
+</html>
